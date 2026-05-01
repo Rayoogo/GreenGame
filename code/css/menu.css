@@ -1,0 +1,79 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url(../img/menu/menu_background.webp);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: auto;
+    filter: opacity(100%);
+    font-family: arial;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1; /* pousse le footer vers le bas */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* centre verticalement ton menu */
+}
+
+a {
+    display: inline;
+    text-decoration: none;
+    color: inherit;
+    padding: 0;
+    border: none;
+}
+
+
+.title {
+    font-size: clamp(8px, 16vw, 110px);
+    font-weight: bold;
+    color: rgb(44, 100, 44);
+    margin-bottom: 0%;
+    text-align: center;
+    text-shadow: 3px 3px 10px rgba(0,0,0,0.4);
+}
+
+.play_continue {
+    font-size: clamp(6px, 12vw, 85px);
+    font-weight: bold;
+    color: rgb(70, 134, 70);
+    margin-top: 0%;
+    margin-bottom: 0%;
+    text-align: center;
+    text-shadow: 3px 3px 10px rgba(0,0,0,0.4);
+}
+
+.restart {
+    font-size: clamp(4px, 6vw, 55px);
+    font-weight: bold;
+    color: rgb(70, 134, 70);
+    margin-top: 0%;
+    margin-bottom: 0%;
+    text-align: center;
+    text-shadow: 3px 3px 10px rgba(0,0,0,0.4);
+}
+
+.menu_options {
+    font-size: clamp(4px, 6vw, 55px);
+    font-weight: bold;
+    color: rgb(95, 180, 95);
+    margin-top: 0%;
+    margin-bottom: 0%;
+    text-align: center;
+    text-shadow: 3px 3px 10px rgba(0,0,0,0.4);
+}
+
+footer {
+    margin-top: auto;
+    text-align: right;
+    padding: 20px;
+    font-size: clamp(10px, 2vw, 20px);
+    color: white;
+}
