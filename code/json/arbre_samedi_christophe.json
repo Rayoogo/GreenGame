@@ -1,0 +1,217 @@
+{
+  "meta": {
+    "day_id": "samedi",
+    "label": "Samedi",
+    "character": "christophe",
+    "title": "Bilan & choix de vie",
+    "subtitle": "Journée de fond",
+    "type": "major",
+    "node_count": 20,
+    "meeting_possible": true,
+    "profile": {
+      "name": "Christophe",
+      "age": 20,
+      "description": "Jeune adulte discret, réservé, introverti. Habite avec son père, loin de son université. Mange souvent les plats cuisinés par son père (produits frais). Peu de jeux vidéos, peu de séries, hésitant pour les activités extérieures.",
+      "style": "Arbre psychologique, interne — MAJEUR, journée de bilan personnel, engagement durable, rencontre possible avec Tristan"
+    }
+  },
+  "nodes": [
+    {
+      "id": "S1",
+      "type": "choice",
+      "character": "christophe",
+      "narrative": "Samedi matin. Christophe se réveille sans réveil. Une semaine s'est écoulée. Il pense à tout ce qu'il a fait.",
+      "question": "Comment commence-t-il son samedi ?",
+      "choices": [
+        { "label": "Marché de plein air avec son père", "sub": "Habitude du samedi", "co2_kg": 0.10, "co2_label": "0.1 kg CO₂", "next_id": "S2A" },
+        { "label": "Grasse matinée + réseaux sociaux", "sub": "Il en a besoin", "co2_kg": 0.05, "co2_label": "0.05 kg CO₂", "next_id": "S2B" },
+        { "label": "Rangement + tri des déchets de la semaine", "sub": "Il avait reporté ça", "co2_kg": 0.01, "co2_label": "0.01 kg CO₂", "next_id": "S2C" }
+      ]
+    },
+    {
+      "id": "S2A",
+      "type": "consequence",
+      "character": "christophe",
+      "co2_added": 0.10,
+      "co2_direction": 1,
+      "title": "Marché avec père",
+      "consequence": "Rituel hebdomadaire. Produits locaux, zéro emballage, lien social.",
+      "tip": "Un marché de plein air local = circuit court, produits de saison, empreinte ~3× plus basse que supermarché.",
+      "next_id": "S3"
+    },
+    {
+      "id": "S2B",
+      "type": "consequence",
+      "character": "christophe",
+      "co2_added": 0.05,
+      "co2_direction": 0,
+      "title": "Grasse matinée",
+      "consequence": "Repos bien mérité. Très faible impact. Le samedi peut être sobre.",
+      "tip": "Une journée à faible consommation énergétique est toujours bénéfique. Le repos compte.",
+      "next_id": "S3"
+    },
+    {
+      "id": "S2C",
+      "type": "consequence",
+      "character": "christophe",
+      "co2_added": 0.01,
+      "co2_direction": 1,
+      "title": "Tri des déchets",
+      "consequence": "Christophe trie le plastique, le verre, le carton. Un geste simple mais systématique.",
+      "tip": "Recycler 1 kg d'aluminium économise ~95% de l'énergie de production primaire.",
+      "next_id": "S3"
+    },
+    {
+      "id": "S3",
+      "type": "choice",
+      "character": "christophe",
+      "narrative": "Début d'après-midi. Tristan lui envoie un message : 'On se retrouve aujourd'hui ? Je suis dispo.'",
+      "question": "Comment Christophe répond-il ?",
+      "choices": [
+        { "label": "Oui — propose une marche dans le parc", "sub": "Proche de chez lui, gratuit", "co2_kg": 0.02, "co2_label": "0.02 kg CO₂", "next_id": "S4_MEETING", "triggers_meeting": true },
+        { "label": "Oui — mais propose un café en ville", "sub": "45 min de bus", "co2_kg": 0.40, "co2_label": "0.4 kg CO₂", "next_id": "S4_MEETING2", "triggers_meeting": true },
+        { "label": "Non — trop fatigué ce soir, peut-être demain", "sub": "Il a du mal à sortir", "co2_kg": 0.00, "co2_label": "0 kg CO₂", "next_id": "S4_ALONE", "triggers_meeting": false }
+      ]
+    },
+    {
+      "id": "S4_MEETING",
+      "type": "consequence",
+      "character": "christophe",
+      "co2_added": 0.02,
+      "co2_direction": 1,
+      "meeting": true,
+      "title": "Balade ensemble !",
+      "consequence": "Christophe propose le parc. Tristan accepte volontiers. Ils se retrouvent à 15h.",
+      "tip": "Une marche à pied = 0 émission directe. L'activité gratuite et écologique par excellence.",
+      "meeting_note": "Tristan et Christophe passent l'après-midi à marcher ensemble dans le parc. Christophe parle peu au début, puis s'ouvre sur la semaine. Tristan découvre un Christophe plus réfléchi qu'il ne le pensait.",
+      "next_id": "S5"
+    },
+    {
+      "id": "S4_MEETING2",
+      "type": "consequence",
+      "character": "christophe",
+      "co2_added": 0.40,
+      "co2_direction": 0,
+      "meeting": true,
+      "title": "Café en ville !",
+      "consequence": "Bus + café. Pas optimal mais le lien social a aussi une valeur.",
+      "tip": "45 min de bus = ~0.3 kg CO₂. Le café chaud lui-même est quasi rien.",
+      "meeting_note": "Christophe et Tristan se retrouvent dans un café du centre. Christophe commande un thé (il aime moins le café), Tristan un expresso. Ils parlent de la semaine et de leurs projets.",
+      "next_id": "S5"
+    },
+    {
+      "id": "S4_ALONE",
+      "type": "consequence",
+      "character": "christophe",
+      "co2_added": 0.00,
+      "co2_direction": 0,
+      "meeting": false,
+      "title": "Reste chez lui",
+      "consequence": "Christophe hésite une dernière fois. Il se dit qu'il aurait peut-être dû aller.",
+      "tip": "Les connexions sociales influencent aussi les comportements écologiques. Les pairs motivent.",
+      "next_id": "S5"
+    },
+    {
+      "id": "S5",
+      "type": "choice",
+      "character": "christophe",
+      "narrative": "Fin d'après-midi. Christophe réfléchit à un engagement plus durable. Il consulte quelques sites.",
+      "question": "Quelle action décide-t-il de mettre en place la semaine prochaine ?",
+      "choices": [
+        { "label": "Arrêter la viande bovine définitivement", "sub": "Il y pense depuis le jeudi", "co2_kg": 0.00, "next_id": "S6A" },
+        { "label": "Passer 100% aux transports en commun", "sub": "Même les jours difficiles", "co2_kg": 0.00, "next_id": "S6B" },
+        { "label": "Cuisiner en batch le dimanche", "sub": "Préparer 4-5 repas à l'avance", "co2_kg": 0.00, "next_id": "S6C" },
+        { "label": "Rejoindre une asso locale de sensibilisation", "sub": "Il a vu une affiche à l'uni", "co2_kg": 0.00, "next_id": "S6D" }
+      ]
+    },
+    {
+      "id": "S6A",
+      "type": "consequence",
+      "character": "christophe",
+      "co2_added": 0.00,
+      "co2_direction": 1,
+      "title": "Stop viande bovine",
+      "consequence": "Décision de grande portée. Le bœuf représente seul 50% de l'empreinte alimentaire d'un Français moyen.",
+      "tip": "Supprimer le bœuf de son alimentation réduit l'empreinte alimentaire d'environ 500 kg CO₂/an.",
+      "next_id": "S7"
+    },
+    {
+      "id": "S6B",
+      "type": "consequence",
+      "character": "christophe",
+      "co2_added": 0.00,
+      "co2_direction": 1,
+      "title": "100% transports en commun",
+      "consequence": "Christophe prend déjà le RER. Formaliser ça comme règle personnelle renforce l'habitude.",
+      "tip": "Passer d'une voiture à 15 000 km/an aux transports en commun = -1.5 à 2 tonnes CO₂/an.",
+      "next_id": "S7"
+    },
+    {
+      "id": "S6C",
+      "type": "consequence",
+      "character": "christophe",
+      "co2_added": 0.00,
+      "co2_direction": 1,
+      "title": "Batch cooking dominical",
+      "consequence": "Cuisiner 5 repas en une session = ~30% d'économie énergétique sur la cuisson.",
+      "tip": "Le batch cooking réduit aussi le gaspillage alimentaire. Double bénéfice.",
+      "next_id": "S7"
+    },
+    {
+      "id": "S6D",
+      "type": "consequence",
+      "character": "christophe",
+      "co2_added": 0.00,
+      "co2_direction": 1,
+      "title": "Rejoindre une asso",
+      "consequence": "L'engagement collectif démultiplie l'impact individuel. Un choix de fond.",
+      "tip": "Les comportements se diffusent par l'entourage. Un militant sensibilise en moyenne 5 personnes.",
+      "next_id": "S7"
+    },
+    {
+      "id": "S7",
+      "type": "choice",
+      "character": "christophe",
+      "narrative": "Soir — Son père et lui dînent ensemble. La semaine touche à sa fin.",
+      "question": "En regardant en arrière, que retient Christophe de sa semaine ?",
+      "choices": [
+        { "label": "'Mes transports ont été mes meilleurs choix.'", "sub": "Il a pris le RER chaque jour", "co2_kg": 0.00, "next_id": "S_END" },
+        { "label": "'C'est l'alimentation qui compte le plus.'", "sub": "La journée courses avec père", "co2_kg": 0.00, "next_id": "S_END2" },
+        { "label": "'J'aurais voulu sortir plus avec Tristan.'", "sub": "Le lien social manquait", "co2_kg": 0.00, "next_id": "S_END3" },
+        { "label": "'Je n'ai pas encore assez changé.'", "sub": "Il reste exigeant envers lui-même", "co2_kg": 0.00, "next_id": "S_END4" }
+      ]
+    },
+    {
+      "id": "S_END",
+      "type": "end",
+      "character": "christophe",
+      "co2_added": 0.00,
+      "narrative": "Son père lève son verre. 'Tu fais mieux que moi à ton âge.' Christophe sourit.",
+      "ending_tone": "positif — reconnaisance familiale"
+    },
+    {
+      "id": "S_END2",
+      "type": "end",
+      "character": "christophe",
+      "co2_added": 0.00,
+      "narrative": "Il consulte quelques recettes végétariennes pour la semaine prochaine. Son père regarde par-dessus son épaule.",
+      "ending_tone": "positif — projection concrète"
+    },
+    {
+      "id": "S_END3",
+      "type": "end",
+      "character": "christophe",
+      "co2_added": 0.00,
+      "narrative": "Il envoie un message à Tristan. 'La semaine prochaine, je dis oui plus souvent.' Tristan répond avec un emoji.",
+      "ending_tone": "mélancolique-ouvert — lien social renforcé"
+    },
+    {
+      "id": "S_END4",
+      "type": "end",
+      "character": "christophe",
+      "co2_added": 0.00,
+      "narrative": "Il ouvre un carnet. Il écrit ses objectifs de la semaine suivante. Deux pages denses et réfléchies.",
+      "ending_tone": "introspectif — engagement profond"
+    }
+  ]
+}

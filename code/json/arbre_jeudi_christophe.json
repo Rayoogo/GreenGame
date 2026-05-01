@@ -1,0 +1,202 @@
+{
+  "meta": {
+    "day_id": "jeudi",
+    "label": "Jeudi",
+    "character": "christophe",
+    "title": "Alimentation & mobilité",
+    "subtitle": "Dilemmes du quotidien",
+    "type": "normal",
+    "node_count": 18,
+    "profile": {
+      "name": "Christophe",
+      "age": 20,
+      "description": "Jeune adulte discret, réservé, introverti. Habite avec son père, loin de son université. Mange souvent les plats cuisinés par son père (produits frais). Peu de jeux vidéos, peu de séries, hésitant pour les activités extérieures.",
+      "style": "Arbre psychologique, interne — journée axée courses, alimentation et réflexion personnelle"
+    }
+  },
+  "nodes": [
+    {
+      "id": "J1",
+      "type": "choice",
+      "character": "christophe",
+      "narrative": "Jeudi matin. Christophe fait les courses avec son père après le petit-déjeuner. Ils planifient la semaine.",
+      "question": "Comment arrivent-ils au supermarché ?",
+      "choices": [
+        { "label": "À pied (15 min)", "sub": "Le marché du quartier", "co2_kg": 0.02, "co2_label": "0.02 kg CO₂", "next_id": "J2A" },
+        { "label": "En voiture (5 min)", "sub": "Plus pratique avec les sacs", "co2_kg": 0.40, "co2_label": "0.4 kg CO₂", "next_id": "J2B" },
+        { "label": "Vélo cargo / chariot à roulettes", "sub": "Alternative pour les sacs lourds", "co2_kg": 0.03, "co2_label": "0.03 kg CO₂", "next_id": "J2C" }
+      ]
+    },
+    {
+      "id": "J2A",
+      "type": "consequence",
+      "character": "christophe",
+      "co2_added": 0.02,
+      "co2_direction": 1,
+      "title": "À pied",
+      "consequence": "15 min à pied, quelques sacs. Un peu lourd au retour mais c'est faisable.",
+      "tip": "Un aller-retour voiture de 5 min = ~500g CO₂. À pied = quasi zéro.",
+      "next_id": "J3"
+    },
+    {
+      "id": "J2B",
+      "type": "consequence",
+      "character": "christophe",
+      "co2_added": 0.40,
+      "co2_direction": -1,
+      "title": "En voiture",
+      "consequence": "Pratique mais la voiture pour 3 km aller-retour est peu efficiente.",
+      "tip": "Les petits trajets <5 km sont les plus polluants par km : moteur froid, peu rentable.",
+      "next_id": "J3"
+    },
+    {
+      "id": "J2C",
+      "type": "consequence",
+      "character": "christophe",
+      "co2_added": 0.03,
+      "co2_direction": 1,
+      "title": "Vélo cargo / chariot",
+      "consequence": "Solution intermédiaire intelligente. Portable, écolo, et on ne se fatigue pas trop.",
+      "tip": "Le vélo cargo électrique en partage devient courant dans les villes. Pratique pour les courses.",
+      "next_id": "J3"
+    },
+    {
+      "id": "J3",
+      "type": "choice",
+      "character": "christophe",
+      "narrative": "Dans les rayons. Son père veut prendre de la viande pour le dîner. Christophe hésite.",
+      "question": "Que met-il dans le caddie pour le soir ?",
+      "choices": [
+        { "label": "Bœuf haché (steak classique)", "sub": "Le préféré de son père", "co2_kg": 2.50, "co2_label": "2.5 kg CO₂", "next_id": "J4A" },
+        { "label": "Poulet fermier label rouge", "sub": "Moins d'élevage intensif", "co2_kg": 0.80, "co2_label": "0.8 kg CO₂", "next_id": "J4B" },
+        { "label": "Lentilles + légumes de saison", "sub": "Il propose à son père", "co2_kg": 0.20, "co2_label": "0.2 kg CO₂", "next_id": "J4C" },
+        { "label": "Poisson frais (cabillaud pêche durable)", "sub": "MSC certifié", "co2_kg": 0.60, "co2_label": "0.6 kg CO₂", "next_id": "J4D" }
+      ]
+    },
+    {
+      "id": "J4A",
+      "type": "consequence",
+      "character": "christophe",
+      "co2_added": 2.50,
+      "co2_direction": -1,
+      "title": "Bœuf haché",
+      "consequence": "Le bœuf est l'aliment le plus émetteur par kg : méthane des bovins + alimentation + transport.",
+      "tip": "1 kg de bœuf = ~27 kg CO₂ équivalent. Une portion de 200g = ~5 kg CO₂.",
+      "next_id": "J5"
+    },
+    {
+      "id": "J4B",
+      "type": "consequence",
+      "character": "christophe",
+      "co2_added": 0.80,
+      "co2_direction": 0,
+      "title": "Poulet label rouge",
+      "consequence": "Meilleur que le bœuf mais pas sans impact. Le label rouge garantit moins d'élevage intensif.",
+      "tip": "Poulet = ~6 kg CO₂/kg vs bœuf ~27 kg CO₂/kg. 4× moins polluant.",
+      "next_id": "J5"
+    },
+    {
+      "id": "J4C",
+      "type": "consequence",
+      "character": "christophe",
+      "co2_added": 0.20,
+      "co2_direction": 1,
+      "title": "Lentilles + légumes",
+      "consequence": "Son père est sceptique mais Christophe cuisine un dal parfumé. Résultat étonnamment bon.",
+      "tip": "Légumineuses : ~1-2 kg CO₂/kg, riches en protéines. Le meilleur échange viande/protéines.",
+      "next_id": "J5"
+    },
+    {
+      "id": "J4D",
+      "type": "consequence",
+      "character": "christophe",
+      "co2_added": 0.60,
+      "co2_direction": 0,
+      "title": "Poisson MSC",
+      "consequence": "Option intermédiaire. La pêche durable reste moins impactante que l'élevage bovin.",
+      "tip": "Poisson MSC : ~3-5 kg CO₂/kg selon espèce. Privilégier les espèces locales et de saison.",
+      "next_id": "J5"
+    },
+    {
+      "id": "J5",
+      "type": "choice",
+      "character": "christophe",
+      "narrative": "Après-midi — Christophe a du temps libre. Il pense à Tristan qui lui a envoyé un message hier.",
+      "question": "Comment passe-t-il son après-midi ?",
+      "choices": [
+        { "label": "Bibliothèque universitaire (bus)", "sub": "Révisions pour l'examen", "co2_kg": 0.20, "co2_label": "0.2 kg CO₂", "next_id": "J6A" },
+        { "label": "Balade en forêt (train régional 40 min)", "sub": "Il a besoin d'air", "co2_kg": 0.35, "co2_label": "0.35 kg CO₂", "next_id": "J6B" },
+        { "label": "Chez lui, révisions + podcast nature", "sub": "Le plus tranquille", "co2_kg": 0.05, "co2_label": "0.05 kg CO₂", "next_id": "J6C" }
+      ]
+    },
+    {
+      "id": "J6A",
+      "type": "consequence",
+      "character": "christophe",
+      "co2_added": 0.20,
+      "co2_direction": 0,
+      "title": "Bibliothèque (bus)",
+      "consequence": "Transport modéré, lieu chauffé collectivement. Raisonnable.",
+      "tip": "Chauffer un bâtiment collectivement est bien plus efficient qu'un logement individuel.",
+      "next_id": "J7"
+    },
+    {
+      "id": "J6B",
+      "type": "consequence",
+      "character": "christophe",
+      "co2_added": 0.35,
+      "co2_direction": 0,
+      "title": "Forêt (train régional)",
+      "consequence": "Le train est bien, mais le trajet aller-retour pour une balade représente quand même un coût.",
+      "tip": "Train régional : ~30-50g CO₂/km/passager. À prioriser sur de plus longues distances.",
+      "next_id": "J7"
+    },
+    {
+      "id": "J6C",
+      "type": "consequence",
+      "character": "christophe",
+      "co2_added": 0.05,
+      "co2_direction": 1,
+      "title": "Chez lui, podcast",
+      "consequence": "Option sobre et reposante. Christophe profite de la sérénité de son domicile.",
+      "tip": "L'audio (podcast, musique) consomme bien moins de données que la vidéo streaming.",
+      "next_id": "J7"
+    },
+    {
+      "id": "J7",
+      "type": "choice",
+      "character": "christophe",
+      "narrative": "Soir — Son père l'interroge sur ses habitudes à l'université.",
+      "question": "Christophe lui répond en réfléchissant à son impact cette semaine. Que dit-il ?",
+      "choices": [
+        { "label": "'J'essaie de prendre le RER mais c'est compliqué.'", "sub": "Honnête, cherche des solutions", "co2_kg": 0, "next_id": "J_END" },
+        { "label": "'Je ne pense pas trop à ça en vrai.'", "sub": "Désengagé momentanément", "co2_kg": 0, "next_id": "J_END2" },
+        { "label": "'J'ai fait attention aujourd'hui en fait.'", "sub": "Prise de conscience active", "co2_kg": 0, "next_id": "J_END3" }
+      ]
+    },
+    {
+      "id": "J_END",
+      "type": "end",
+      "character": "christophe",
+      "co2_added": 0,
+      "narrative": "Son père l'écoute. Une discussion s'engage sur le covoiturage du quartier et les habitudes de la famille.",
+      "meeting_occurred": false
+    },
+    {
+      "id": "J_END2",
+      "type": "end",
+      "character": "christophe",
+      "co2_added": 0,
+      "narrative": "Son père sourit. Christophe regarde par la fenêtre. Il sait que demain, il peut faire différemment.",
+      "meeting_occurred": false
+    },
+    {
+      "id": "J_END3",
+      "type": "end",
+      "character": "christophe",
+      "co2_added": 0,
+      "narrative": "Son père est surpris. Il lui dit qu'il avait acheté les lentilles en pensant à la même chose. Ils sourient.",
+      "meeting_occurred": false
+    }
+  ]
+}

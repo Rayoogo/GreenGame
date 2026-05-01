@@ -1,0 +1,289 @@
+{
+  "meta": {
+    "project": "Green Game",
+    "version": "1.0",
+    "description": "Système narratif à embranchements complet du jeu Green Game. Couvre une semaine (Lundi–Samedi) alternant entre deux personnages : Tristan (Lun, Mer, Ven) et Christophe (Mar, Jeu, Sam). Chaque journée est un arbre de décision indépendant. Certaines branches convergent pour créer des rencontres entre les deux personnages.",
+    "team": ["Antoine Egnodou", "Raphaël Perricaud", "Christophe Li", "Théo Boisel", "Théo Samama", "Tristan Moureu Cadier"],
+    "source_files": {
+      "lundi":    "arbre_lundi_tristan.json",
+      "mardi":    "arbre_mardi_christophe.json",
+      "mercredi": "arbre_mercredi_tristan.json",
+      "jeudi":    "arbre_jeudi_christophe.json",
+      "vendredi": "arbre_vendredi_tristan.json",
+      "samedi":   "arbre_samedi_christophe.json"
+    }
+  },
+
+  "characters": {
+    "tristan": {
+      "name": "Tristan",
+      "age": 20,
+      "personality": "Enjoué, extraverti, spontané, ne se pose pas trop de questions.",
+      "living_situation": "Habite seul, à côté de son université.",
+      "food_habits": "Aime manger à l'extérieur : commander de la nourriture ou acheter du tout fait en magasin.",
+      "hobbies": ["Jeux vidéos", "Séries", "Sorties (soirées, escape game, cinéma...)"],
+      "days": ["lundi", "mercredi", "vendredi"],
+      "narrative_style": "Arbre externe et événementiel. Plus de branches parallèles. 35–60 nœuds par journée. Axé sur les choix sociaux, les transports, la consommation en ville."
+    },
+    "christophe": {
+      "name": "Christophe",
+      "age": 20,
+      "personality": "Discret, réservé, introverti, réfléchi et hésitant avant d'agir.",
+      "living_situation": "Habite avec son père, loin de son université.",
+      "food_habits": "Mange souvent les plats cuisinés par son père à base de produits frais achetés en magasin.",
+      "hobbies": ["Lecture", "Podcasts", "Activités calmes à domicile"],
+      "days": ["mardi", "jeudi", "samedi"],
+      "narrative_style": "Arbre psychologique et interne. Moins de branches mais plus profondes. 25–45 nœuds par journée. Axé sur l'alimentation, les transports domicile-université, la réflexion personnelle."
+    }
+  },
+
+  "week_structure": [
+    {
+      "day_id": "lundi",
+      "label": "Lundi",
+      "character": "tristan",
+      "title": "Réveil, transport & repas",
+      "type": "normal",
+      "themes": ["transport urbain", "alimentation midi", "loisirs soir", "eau chaude"],
+      "node_count": 19,
+      "meeting_possible": false,
+      "first_node": "L1",
+      "end_nodes": ["L_END"],
+      "co2_range_kg": { "min": 0.15, "max": 5.55 }
+    },
+    {
+      "day_id": "mardi",
+      "label": "Mardi",
+      "character": "christophe",
+      "title": "Introspection & choix domestiques",
+      "type": "normal",
+      "themes": ["petit-déjeuner", "transport longue distance", "boîte repas / partage", "loisirs sobres", "chauffage nuit"],
+      "node_count": 21,
+      "meeting_possible": false,
+      "first_node": "M1",
+      "end_nodes": ["M_END", "M_END2", "M_END3"],
+      "co2_range_kg": { "min": 0.62, "max": 2.95 }
+    },
+    {
+      "day_id": "mercredi",
+      "label": "Mercredi",
+      "character": "tristan",
+      "title": "Midi en ville & soirée",
+      "type": "major",
+      "themes": ["petit-déjeuner", "courses alimentaires", "rencontre possible avec Christophe", "café jetable vs réutilisable", "soirée"],
+      "node_count": 20,
+      "meeting_possible": true,
+      "meeting_trigger_nodes": ["ME5", "ME9"],
+      "meeting_nodes": ["ME6_MEETING", "ME6_MEETING2", "ME_END2"],
+      "first_node": "ME1",
+      "end_nodes": ["ME_END", "ME_END2", "ME_END3"],
+      "co2_range_kg": { "min": 0.37, "max": 2.60 }
+    },
+    {
+      "day_id": "jeudi",
+      "label": "Jeudi",
+      "character": "christophe",
+      "title": "Alimentation & mobilité",
+      "type": "normal",
+      "themes": ["courses à pied vs voiture", "choix protéine (bœuf/poulet/lentilles/poisson)", "après-midi libre", "réflexion intime avec le père"],
+      "node_count": 17,
+      "meeting_possible": false,
+      "first_node": "J1",
+      "end_nodes": ["J_END", "J_END2", "J_END3"],
+      "co2_range_kg": { "min": 0.27, "max": 3.45 }
+    },
+    {
+      "day_id": "vendredi",
+      "label": "Vendredi",
+      "character": "tristan",
+      "title": "Week-end qui approche",
+      "type": "major",
+      "themes": ["réveil et matin", "activité sociale (escape game / parc / karting / house party)", "rencontre majeure possible avec Christophe", "dîner du soir"],
+      "node_count": 14,
+      "meeting_possible": true,
+      "meeting_trigger_nodes": ["V3"],
+      "meeting_nodes": ["V4_MEETING"],
+      "first_node": "V1",
+      "end_nodes": ["V_END"],
+      "co2_range_kg": { "min": 0.24, "max": 4.67 }
+    },
+    {
+      "day_id": "samedi",
+      "label": "Samedi",
+      "character": "christophe",
+      "title": "Bilan & choix de vie",
+      "type": "major",
+      "themes": ["matinée rituelle (marché / grasse mat / tri déchets)", "rencontre possible avec Tristan (parc ou café)", "engagement durable", "bilan narratif de la semaine"],
+      "node_count": 17,
+      "meeting_possible": true,
+      "meeting_trigger_nodes": ["S3"],
+      "meeting_nodes": ["S4_MEETING", "S4_MEETING2"],
+      "first_node": "S1",
+      "end_nodes": ["S_END", "S_END2", "S_END3", "S_END4"],
+      "co2_range_kg": { "min": 0.13, "max": 0.53 }
+    }
+  ],
+
+  "meeting_scenarios": [
+    {
+      "id": "MEET_MER_DEJEUNER_VEGE",
+      "day": "mercredi",
+      "trigger_node": "ME5",
+      "choice_label": "Oui, il propose un endroit à pied",
+      "consequence_node": "ME6_MEETING",
+      "description": "Tristan et Christophe déjeunent ensemble dans un petit resto végétarien proche de chez Tristan.",
+      "activity": "Déjeuner végétarien",
+      "initiator": "tristan",
+      "co2_impact": "faible (0.05 kg CO₂)"
+    },
+    {
+      "id": "MEET_MER_FOODTRUCK",
+      "day": "mercredi",
+      "trigger_node": "ME5",
+      "choice_label": "Oui, mais il propose un food truck loin",
+      "consequence_node": "ME6_MEETING2",
+      "description": "Tristan et Christophe se retrouvent dans un food truck plus lointain. Christophe hésite mais accepte.",
+      "activity": "Food truck en scooter partagé",
+      "initiator": "tristan",
+      "co2_impact": "modéré (0.9 kg CO₂)"
+    },
+    {
+      "id": "MEET_MER_GAMING",
+      "day": "mercredi",
+      "trigger_node": "ME9",
+      "choice_label": "Gaming en ligne avec Christophe (Discord)",
+      "consequence_node": "ME_END2",
+      "description": "Tristan et Christophe jouent ensemble en ligne depuis chez eux. Soirée calme et connectée.",
+      "activity": "Gaming en ligne",
+      "initiator": "tristan",
+      "co2_impact": "faible (0.35 kg CO₂)"
+    },
+    {
+      "id": "MEET_VEN_ESCAPEGAME",
+      "day": "vendredi",
+      "trigger_node": "V3",
+      "choice_label": "Escape game en ville (métro + marche)",
+      "consequence_node": "V4_MEETING",
+      "description": "Grande rencontre de la semaine. Tristan, Christophe et deux autres amis font l'escape game. Christophe sort de sa zone de confort.",
+      "activity": "Escape game",
+      "initiator": "tristan",
+      "co2_impact": "faible (0.3 kg CO₂)"
+    },
+    {
+      "id": "MEET_SAM_PARC",
+      "day": "samedi",
+      "trigger_node": "S3",
+      "choice_label": "Oui — propose une marche dans le parc",
+      "consequence_node": "S4_MEETING",
+      "description": "Christophe et Tristan se retrouvent dans le parc. Christophe s'ouvre sur la semaine. Tristan le découvre sous un autre angle.",
+      "activity": "Marche dans le parc",
+      "initiator": "christophe",
+      "co2_impact": "quasi nul (0.02 kg CO₂)"
+    },
+    {
+      "id": "MEET_SAM_CAFE",
+      "day": "samedi",
+      "trigger_node": "S3",
+      "choice_label": "Oui — mais propose un café en ville",
+      "consequence_node": "S4_MEETING2",
+      "description": "Christophe et Tristan se retrouvent dans un café. Christophe prend un thé. Ils parlent de leurs projets.",
+      "activity": "Café en ville",
+      "initiator": "christophe",
+      "co2_impact": "modéré (0.4 kg CO₂)"
+    }
+  ],
+
+  "co2_reference": {
+    "average_french_daily_kg": 13,
+    "categories": {
+      "transport": {
+        "pied_km": 0.0,
+        "velo_km": 0.005,
+        "velo_libre_service_km": 0.010,
+        "scooter_electrique_partage_km": 0.040,
+        "bus_urbain_km": 0.070,
+        "rer_metro_km": 0.020,
+        "train_regional_km": 0.040,
+        "vtc_thermique_km": 0.150,
+        "voiture_thermique_solo_km": 0.180,
+        "covoiturage_thermique_km": 0.090
+      },
+      "alimentation_portion": {
+        "boeuf_200g": 2.50,
+        "poulet_200g": 0.80,
+        "poisson_msc_200g": 0.60,
+        "lentilles_legumes": 0.20,
+        "pizza_maison": 0.80,
+        "sandwich_industriel": 1.80,
+        "sushi_livraison": 2.10,
+        "burger_fastfood": 2.40,
+        "repas_ru": 0.80,
+        "meal_prep_legumes": 0.30,
+        "surgle_micro_onde": 0.80
+      },
+      "boissons": {
+        "cafe_filtre_tasse": 0.015,
+        "cafe_capsule_tasse": 0.050,
+        "canette_energisante": 0.250,
+        "eau_robinet_litre": 0.001
+      },
+      "livraison": {
+        "surcharge_trajet_dedie_kg": 0.35
+      },
+      "eau_chaude": {
+        "douche_5min": 0.15,
+        "douche_15min": 0.45,
+        "bain": 0.90
+      },
+      "numerique_heure": {
+        "streaming_video_hd": 0.05,
+        "gaming_console": 0.06,
+        "smartphone": 0.003,
+        "appel_audio": 0.003
+      },
+      "chauffage_nuit": {
+        "16_degres": 0.15,
+        "19_degres": 0.35,
+        "22_degres": 0.60
+      }
+    }
+  },
+
+  "narrative_arcs": {
+    "tristan_arc": {
+      "lundi": "Journée ordinaire, Tristan établit ses habitudes de la semaine.",
+      "mercredi": "Journée charnière : Tristan peut choisir de rejoindre Christophe ou non. Première vraie opportunité de rencontre.",
+      "vendredi": "Climax social : l'escape game est la rencontre la plus forte de la semaine si Tristan l'organise."
+    },
+    "christophe_arc": {
+      "mardi": "Journée ancrée dans la routine domestique. Christophe réfléchit à ses habitudes sans grand événement.",
+      "jeudi": "Journée de fond : les courses avec son père et le choix alimentaire révèlent son rapport à la nature et à la famille.",
+      "samedi": "Journée de bilan : Christophe tire les leçons de la semaine, s'engage pour l'avenir, et peut choisir de sortir rejoindre Tristan."
+    },
+    "cross_character_arc": {
+      "description": "Les deux personnages peuvent se croiser jusqu'à 3 fois dans la semaine, selon les branches choisies. Plus ils se rencontrent, plus leur dynamique évolue : Tristan découvre la profondeur de Christophe, Christophe s'ouvre progressivement sous l'influence enjouée de Tristan.",
+      "max_meetings": 3,
+      "meeting_ids": ["MEET_MER_DEJEUNER_VEGE", "MEET_MER_FOODTRUCK", "MEET_MER_GAMING", "MEET_VEN_ESCAPEGAME", "MEET_SAM_PARC", "MEET_SAM_CAFE"]
+    }
+  },
+
+  "game_rules": {
+    "session_duration_minutes": { "min": 5, "max": 10 },
+    "scoring": {
+      "co2_threshold_good_kg": 4.0,
+      "co2_threshold_mid_kg": 8.0,
+      "co2_threshold_bad_kg": 13.0,
+      "meeting_bonus": "Affichage d'un badge 🤝 en fin de journée si rencontre."
+    },
+    "node_types": {
+      "choice": "Nœud de décision : l'utilisateur choisit parmi 2 à 4 options.",
+      "consequence": "Nœud de résultat : affiche l'impact CO₂ du choix, un commentaire narratif, et un conseil pédagogique.",
+      "end": "Nœud terminal : bilan de la journée avec score, comparaison à la moyenne nationale, et récapitulatif des choix."
+    },
+    "co2_direction_legend": {
+      "1":  "Bon choix (impact faible ou nul)",
+      "0":  "Neutre ou acceptable",
+      "-1": "Mauvais choix (impact élevé)"
+    }
+  }
+}

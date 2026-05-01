@@ -1,0 +1,242 @@
+{
+  "meta": {
+    "day_id": "lundi",
+    "label": "Lundi",
+    "character": "tristan",
+    "title": "Réveil, transport & repas",
+    "subtitle": "Semaine qui commence",
+    "type": "normal",
+    "node_count": 17,
+    "profile": {
+      "name": "Tristan",
+      "age": 20,
+      "description": "Jeune adulte enjoué, extraverti, habite seul près de son université. Aime manger à l'extérieur, jouer aux jeux vidéos, faire des sorties (soirées, escape game...).",
+      "style": "Arbre externe, événementiel — plus de branches parallèles (35–60 nœuds cibles)"
+    }
+  },
+  "nodes": [
+    {
+      "id": "L1",
+      "type": "choice",
+      "character": "tristan",
+      "narrative": "Tristan ouvre les yeux. 8h15, son alarme sonnait depuis 10 min. Il a cours à 9h30, en amphi à 20 minutes à pied.",
+      "question": "Comment Tristan se déplace-t-il ce matin ?",
+      "choices": [
+        { "label": "À pied (20 min)", "sub": "Profite du matin frais", "co2_kg": 0.00, "co2_label": "0 kg CO₂", "next_id": "L2A" },
+        { "label": "Vélo en libre-service", "sub": "Lime ou Vélib', rapide", "co2_kg": 0.01, "co2_label": "0.01 kg CO₂", "next_id": "L2B" },
+        { "label": "Scooter électrique partagé", "sub": "Plus rapide, plus confortable", "co2_kg": 0.04, "co2_label": "0.04 kg CO₂", "next_id": "L2C" },
+        { "label": "Voiture d'un ami (covoiturage)", "sub": "Il l'a croisé dans le couloir", "co2_kg": 0.90, "co2_label": "0.9 kg CO₂", "next_id": "L2D" }
+      ]
+    },
+    {
+      "id": "L2A",
+      "type": "consequence",
+      "character": "tristan",
+      "co2_added": 0.00,
+      "co2_direction": 1,
+      "title": "Trajet à pied",
+      "consequence": "Zéro émission. Tristan arrive en forme, il a pris l'air.",
+      "tip": "Marcher moins de 3 km : l'option systématiquement la plus vertueuse.",
+      "next_id": "L3"
+    },
+    {
+      "id": "L2B",
+      "type": "consequence",
+      "character": "tristan",
+      "co2_added": 0.01,
+      "co2_direction": 1,
+      "title": "Vélo partagé",
+      "consequence": "Presque rien. Tristan pédale 6 min, il est à l'heure.",
+      "tip": "Le vélo en libre-service émet ~10g CO₂/km (fabrication+électricité).",
+      "next_id": "L3"
+    },
+    {
+      "id": "L2C",
+      "type": "consequence",
+      "character": "tristan",
+      "co2_added": 0.04,
+      "co2_direction": 0,
+      "title": "Scooter électrique",
+      "consequence": "Faible mais non nul. Pratique, mais la fabrication de la flotte pèse.",
+      "tip": "Trottinettes/scooters partagés : ~30-50g CO₂/km selon réseau électrique.",
+      "next_id": "L3"
+    },
+    {
+      "id": "L2D",
+      "type": "consequence",
+      "character": "tristan",
+      "co2_added": 0.90,
+      "co2_direction": -1,
+      "title": "Voiture d'un ami",
+      "consequence": "Beaucoup plus élevé même à deux. La voiture thermique reste le transport le plus émetteur en ville.",
+      "tip": "Covoiturage en thermique ~90g CO₂/km par passager (hors trafic).",
+      "next_id": "L3"
+    },
+    {
+      "id": "L3",
+      "type": "choice",
+      "character": "tristan",
+      "narrative": "Pause de midi. Tristan a une heure libre entre deux cours.",
+      "question": "Que mange-t-il ?",
+      "choices": [
+        { "label": "Resto kebab / sandwich industriel", "sub": "Rapide, pas cher", "co2_kg": 1.80, "co2_label": "~1.8 kg CO₂", "next_id": "L4A" },
+        { "label": "Plat chaud du self universitaire", "sub": "Formule RU à 3,30€", "co2_kg": 0.80, "co2_label": "~0.8 kg CO₂", "next_id": "L4B" },
+        { "label": "Meal prep qu'il a préparé la veille", "sub": "Riz + légumes sautés", "co2_kg": 0.30, "co2_label": "~0.3 kg CO₂", "next_id": "L4C" },
+        { "label": "Livraison UberEats dans l'amphi", "sub": "Pizza pour deux", "co2_kg": 3.20, "co2_label": "~3.2 kg CO₂", "next_id": "L4D" }
+      ]
+    },
+    {
+      "id": "L4A",
+      "type": "consequence",
+      "character": "tristan",
+      "co2_added": 1.80,
+      "co2_direction": -1,
+      "title": "Kebab industriel",
+      "consequence": "Pain de mie, viande transformée, emballage plastique. Tout s'additionne.",
+      "tip": "Sandwich industriel : ~1.5-2 kg CO₂ selon garniture (viande vs végé).",
+      "next_id": "L5"
+    },
+    {
+      "id": "L4B",
+      "type": "consequence",
+      "character": "tristan",
+      "co2_added": 0.80,
+      "co2_direction": 0,
+      "title": "Self universitaire",
+      "consequence": "Meilleure option hors maison. Masse = moins d'emballage, sourcing mutualisé.",
+      "tip": "Un repas chaud au RU : ~0.7-1 kg CO₂ selon menu viande/poisson/végé.",
+      "next_id": "L5"
+    },
+    {
+      "id": "L4C",
+      "type": "consequence",
+      "character": "tristan",
+      "co2_added": 0.30,
+      "co2_direction": 1,
+      "title": "Meal prep maison",
+      "consequence": "Excellente empreinte. Cuisson mutualisée, zéro emballage inutile.",
+      "tip": "Légumes sautés riz : ~0.3 kg CO₂. La cuisine maison bat presque tout.",
+      "next_id": "L5"
+    },
+    {
+      "id": "L4D",
+      "type": "consequence",
+      "character": "tristan",
+      "co2_added": 3.20,
+      "co2_direction": -1,
+      "title": "Livraison dans l'amphi",
+      "consequence": "La livraison à domicile cumule emballage, trajet dédié, et souvent pizza au fromage.",
+      "tip": "Livraison urbaine : +0.3-0.5 kg CO₂ liés au trajet moto/vélo cargo.",
+      "next_id": "L5"
+    },
+    {
+      "id": "L5",
+      "type": "choice",
+      "character": "tristan",
+      "narrative": "18h — Fin des cours. Son ami Raphaël lui envoie un message.",
+      "question": "Que fait Tristan ce soir ?",
+      "choices": [
+        { "label": "Soirée chez Raphaël (transports doux)", "sub": "À pied ou vélo, 15 min", "co2_kg": 0.05, "co2_label": "~0.05 kg CO₂", "next_id": "L6A" },
+        { "label": "Netflix + gaming chez lui", "sub": "Soirée tranquille", "co2_kg": 0.40, "co2_label": "~0.4 kg CO₂", "next_id": "L6B" },
+        { "label": "Escape game en taxi / VTC", "sub": "25 min de trajet aller", "co2_kg": 2.10, "co2_label": "~2.1 kg CO₂", "next_id": "L6C" },
+        { "label": "Soirée en voiture (ami conducteur)", "sub": "Bar à 8 km", "co2_kg": 1.60, "co2_label": "~1.6 kg CO₂", "next_id": "L6D" }
+      ]
+    },
+    {
+      "id": "L6A",
+      "type": "consequence",
+      "character": "tristan",
+      "co2_added": 0.05,
+      "co2_direction": 1,
+      "title": "Soirée à vélo/pied",
+      "consequence": "Tristan retrouve ses amis. La soirée est sympa, l'empreinte quasi nulle.",
+      "tip": "Les loisirs de proximité sans voiture : le combo social + écolo par excellence.",
+      "next_id": "L7"
+    },
+    {
+      "id": "L6B",
+      "type": "consequence",
+      "character": "tristan",
+      "co2_added": 0.40,
+      "co2_direction": 0,
+      "title": "Netflix + gaming",
+      "consequence": "Une console allumée 4h : ~0.2 kg CO₂. Netflix 4h : ~0.15 kg. Raisonnable.",
+      "tip": "Streaming HD = ~0.03-0.04 kg CO₂/h selon datacenter. Gaming = davantage.",
+      "next_id": "L7"
+    },
+    {
+      "id": "L6C",
+      "type": "consequence",
+      "character": "tristan",
+      "co2_added": 2.10,
+      "co2_direction": -1,
+      "title": "Escape game en VTC",
+      "consequence": "Le VTC thermique sur 25 min aller-retour pèse autant que tous ses repas.",
+      "tip": "VTC ~150g CO₂/km/passager. Préférer un électrique ou le vélo.",
+      "next_id": "L7"
+    },
+    {
+      "id": "L6D",
+      "type": "consequence",
+      "character": "tristan",
+      "co2_added": 1.60,
+      "co2_direction": -1,
+      "title": "Soirée en voiture",
+      "consequence": "8 km A/R × 2 trajets en voiture thermique. L'alcool c'est une chose, le CO₂ en est une autre.",
+      "tip": "Sortie en voiture 16 km total = ~2 kg CO₂ pour un petit moteur.",
+      "next_id": "L7"
+    },
+    {
+      "id": "L7",
+      "type": "choice",
+      "character": "tristan",
+      "narrative": "22h — Tristan rentre. Il doit recharger son téléphone et sa console. Il a aussi envie d'une douche.",
+      "question": "Quelle douche ce soir ?",
+      "choices": [
+        { "label": "Douche rapide (5 min)", "sub": "Eau froide au début", "co2_kg": 0.15, "co2_label": "0.15 kg CO₂", "next_id": "L8A" },
+        { "label": "Longue douche chaude (15 min)", "sub": "Journée stressante", "co2_kg": 0.45, "co2_label": "0.45 kg CO₂", "next_id": "L8B" },
+        { "label": "Bain + musique", "sub": "Il mérite ça", "co2_kg": 0.90, "co2_label": "0.9 kg CO₂", "next_id": "L8C" }
+      ]
+    },
+    {
+      "id": "L8A",
+      "type": "consequence",
+      "character": "tristan",
+      "co2_added": 0.15,
+      "co2_direction": 1,
+      "title": "Douche 5 min",
+      "consequence": "Environ 50L d'eau. L'option eau chaude la plus sobre.",
+      "tip": "Chaque minute de douche chaude = ~10L d'eau + chauffage. Privilégier ≤8 min.",
+      "next_id": "L_END"
+    },
+    {
+      "id": "L8B",
+      "type": "consequence",
+      "character": "tristan",
+      "co2_added": 0.45,
+      "co2_direction": 0,
+      "title": "Douche 15 min",
+      "consequence": "~150L d'eau chauffée. Confort mais coût carbone x3.",
+      "tip": "Installer une pomme de douche économique réduit la conso de 50% sans effort.",
+      "next_id": "L_END"
+    },
+    {
+      "id": "L8C",
+      "type": "consequence",
+      "character": "tristan",
+      "co2_added": 0.90,
+      "co2_direction": -1,
+      "title": "Bain",
+      "consequence": "180-200L d'eau chaude. L'option la moins efficace énergétiquement.",
+      "tip": "Un bain consomme 3-4× plus qu'une douche courte en énergie de chauffage.",
+      "next_id": "L_END"
+    },
+    {
+      "id": "L_END",
+      "type": "end",
+      "character": "tristan",
+      "narrative": "Tristan s'endort. Première journée de la semaine bouclée.",
+      "meeting_occurred": false
+    }
+  ]
+}

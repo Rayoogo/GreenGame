@@ -1,0 +1,259 @@
+{
+  "meta": {
+    "day_id": "mardi",
+    "label": "Mardi",
+    "character": "christophe",
+    "title": "Introspection & choix domestiques",
+    "subtitle": "La routine questionnée",
+    "type": "normal",
+    "node_count": 19,
+    "profile": {
+      "name": "Christophe",
+      "age": 20,
+      "description": "Jeune adulte discret, réservé, introverti. Habite avec son père, loin de son université. Mange souvent les plats cuisinés par son père (produits frais). Peu de jeux vidéos, peu de séries, hésitant pour les activités extérieures.",
+      "style": "Arbre psychologique, interne — moins de branches mais plus profondes (25–45 nœuds cibles)"
+    }
+  },
+  "nodes": [
+    {
+      "id": "M1",
+      "type": "choice",
+      "character": "christophe",
+      "narrative": "Mardi matin. Christophe se réveille tôt chez son père. Il doit aller à l'université à 45 min en transport. Son père a déjà préparé le café.",
+      "question": "Quel petit-déjeuner ce matin ?",
+      "choices": [
+        { "label": "Pain + confiture + café (produits maison)", "sub": "Recette de son père, habitude", "co2_kg": 0.15, "co2_label": "0.15 kg CO₂", "next_id": "M2A" },
+        { "label": "Céréales industrielles + lait", "sub": "Rapide et pratique", "co2_kg": 0.40, "co2_label": "0.4 kg CO₂", "next_id": "M2B" },
+        { "label": "Viennoiseries achetées à la boulangerie", "sub": "Tradition du mardi", "co2_kg": 0.60, "co2_label": "0.6 kg CO₂", "next_id": "M2C" }
+      ]
+    },
+    {
+      "id": "M2A",
+      "type": "consequence",
+      "character": "christophe",
+      "co2_added": 0.15,
+      "co2_direction": 1,
+      "title": "Petit-déj maison",
+      "consequence": "Pain, beurre, confiture : faible empreinte quand c'est fait maison. Le café filtre aussi mieux que la capsule.",
+      "tip": "Café filtre = 0.015 kg CO₂/tasse. Capsule Nespresso = 0.05 kg. × 365 jours = différence conséquente.",
+      "next_id": "M3"
+    },
+    {
+      "id": "M2B",
+      "type": "consequence",
+      "character": "christophe",
+      "co2_added": 0.40,
+      "co2_direction": 0,
+      "title": "Céréales industrielles",
+      "consequence": "Emballage carton + transformation industrielle + lait (élevage).",
+      "tip": "100g de céréales transformées = ~0.3 kg CO₂. Le lait de vache ajoute ~0.1 kg.",
+      "next_id": "M3"
+    },
+    {
+      "id": "M2C",
+      "type": "consequence",
+      "character": "christophe",
+      "co2_added": 0.60,
+      "co2_direction": -1,
+      "title": "Viennoiseries boulangerie",
+      "consequence": "Beurre, œufs en grande quantité, cuisson four longue durée.",
+      "tip": "Un croissant = ~0.2-0.3 kg CO₂. La pâtisserie est dense en beurre/œuf.",
+      "next_id": "M3"
+    },
+    {
+      "id": "M3",
+      "type": "choice",
+      "character": "christophe",
+      "narrative": "Christophe réfléchit à comment rejoindre l'université. 45 min c'est loin. Il hésite.",
+      "question": "Comment se déplace-t-il ?",
+      "choices": [
+        { "label": "RER + métro", "sub": "Son trajet habituel", "co2_kg": 0.25, "co2_label": "0.25 kg CO₂", "next_id": "M4A" },
+        { "label": "Bus direct (plus simple)", "sub": "Un seul changement", "co2_kg": 0.35, "co2_label": "0.35 kg CO₂", "next_id": "M4B" },
+        { "label": "Son père le dépose en voiture", "sub": "Il propose parfois", "co2_kg": 1.80, "co2_label": "1.8 kg CO₂", "next_id": "M4C" },
+        { "label": "Vélo + RER", "sub": "20 min vélo puis train", "co2_kg": 0.20, "co2_label": "0.2 kg CO₂", "next_id": "M4D" }
+      ]
+    },
+    {
+      "id": "M4A",
+      "type": "consequence",
+      "character": "christophe",
+      "co2_added": 0.25,
+      "co2_direction": 1,
+      "title": "RER + métro",
+      "consequence": "Transport en commun électrique = meilleur ratio confort/émission sur longue distance.",
+      "tip": "RER en Île-de-France : ~20g CO₂/km/passager (électricité décarbonée France).",
+      "next_id": "M5"
+    },
+    {
+      "id": "M4B",
+      "type": "consequence",
+      "character": "christophe",
+      "co2_added": 0.35,
+      "co2_direction": 0,
+      "title": "Bus",
+      "consequence": "Plus confortable, légèrement plus émetteur. Diesel urbain.",
+      "tip": "Bus RATP : ~50-80g CO₂/km/passager selon taux de remplissage.",
+      "next_id": "M5"
+    },
+    {
+      "id": "M4C",
+      "type": "consequence",
+      "character": "christophe",
+      "co2_added": 1.80,
+      "co2_direction": -1,
+      "title": "Voiture du père",
+      "consequence": "Pratique mais coûteux en CO₂. 45 min en voiture = ~25-30 km en zone urbaine.",
+      "tip": "Voiture thermique urbaine : ~130-180g CO₂/km selon modèle et embouteillages.",
+      "next_id": "M5"
+    },
+    {
+      "id": "M4D",
+      "type": "consequence",
+      "character": "christophe",
+      "co2_added": 0.20,
+      "co2_direction": 1,
+      "title": "Vélo + RER",
+      "consequence": "Le combo optimal. Christophe fait du sport et réduit son empreinte.",
+      "tip": "Vélo personnel = quasi 0 CO₂ opérationnel. Idéal pour les premiers/derniers km.",
+      "next_id": "M5"
+    },
+    {
+      "id": "M5",
+      "type": "choice",
+      "character": "christophe",
+      "narrative": "À l'université, un camarade lui propose de manger ensemble. Christophe son père lui a préparé une boîte repas.",
+      "question": "Que fait-il avec sa boîte repas ?",
+      "choices": [
+        { "label": "Mange sa boîte au campus", "sub": "Poulet rôti + riz + salade", "co2_kg": 0.50, "co2_label": "0.5 kg CO₂", "next_id": "M6A" },
+        { "label": "Range la boîte, mange au self", "sub": "Il veut sociabiliser", "co2_kg": 0.90, "co2_label": "0.9 kg CO₂", "next_id": "M6B" },
+        { "label": "Partage la boîte avec son ami", "sub": "Son père avait fait pour deux", "co2_kg": 0.25, "co2_label": "0.25 kg CO₂", "next_id": "M6C" }
+      ]
+    },
+    {
+      "id": "M6A",
+      "type": "consequence",
+      "character": "christophe",
+      "co2_added": 0.50,
+      "co2_direction": 0,
+      "title": "Boîte maison",
+      "consequence": "Le repas de son père est équilibré et bien empaqueté. Économique et raisonnable.",
+      "tip": "Poulet rôti : ~1.5 kg CO₂/kg de poulet. Une portion = ~200g = ~0.3 kg CO₂ hors riz/légumes.",
+      "next_id": "M7"
+    },
+    {
+      "id": "M6B",
+      "type": "consequence",
+      "character": "christophe",
+      "co2_added": 0.90,
+      "co2_direction": -1,
+      "title": "Self + boîte gardée",
+      "consequence": "Il mange deux repas en pratique, gaspille le premier. L'intention sociale est bonne mais la boîte finit froide.",
+      "tip": "Le gaspillage alimentaire représente 8-10% des émissions mondiales de GES.",
+      "next_id": "M7"
+    },
+    {
+      "id": "M6C",
+      "type": "consequence",
+      "character": "christophe",
+      "co2_added": 0.25,
+      "co2_direction": 1,
+      "title": "Partage la boîte",
+      "consequence": "Son père avait vu juste. Christophe et son ami mangent ensemble, et l'empreinte est divisée par deux.",
+      "tip": "Partager un repas cuisiné réduit proportionnellement l'impact par personne.",
+      "next_id": "M7"
+    },
+    {
+      "id": "M7",
+      "type": "choice",
+      "character": "christophe",
+      "narrative": "Soir. Christophe est rentré chez lui. Son père propose de faire les courses ensemble demain, mais ce soir il hésite sur ses loisirs.",
+      "question": "Que fait Christophe ce soir ?",
+      "choices": [
+        { "label": "Lit un livre (papier)", "sub": "Il vient de l'emprunter", "co2_kg": 0.02, "co2_label": "0.02 kg CO₂", "next_id": "M8A" },
+        { "label": "Regarde des vidéos YouTube (2h)", "sub": "Sur son PC", "co2_kg": 0.12, "co2_label": "0.12 kg CO₂", "next_id": "M8B" },
+        { "label": "Appelle un ami pendant 1h", "sub": "Vieux smartphone", "co2_kg": 0.05, "co2_label": "0.05 kg CO₂", "next_id": "M8C" },
+        { "label": "Cuisine avec son père", "sub": "Prépare le repas de demain aussi", "co2_kg": 0.10, "co2_label": "0.1 kg CO₂", "next_id": "M8D" }
+      ]
+    },
+    {
+      "id": "M8A",
+      "type": "consequence",
+      "character": "christophe",
+      "co2_added": 0.02,
+      "co2_direction": 1,
+      "title": "Lecture papier",
+      "consequence": "Lumière d'ambiance, zéro écran, zéro streaming. L'option la plus légère.",
+      "tip": "Un livre papier sur sa durée de vie = ~1 kg CO₂. Emprunté à la bibliothèque = proche de zéro.",
+      "next_id": "M9"
+    },
+    {
+      "id": "M8B",
+      "type": "consequence",
+      "character": "christophe",
+      "co2_added": 0.12,
+      "co2_direction": 0,
+      "title": "YouTube 2h",
+      "consequence": "Streaming vidéo : datacenters + réseau + écran PC. Pas négligeable sur longue durée.",
+      "tip": "Streaming vidéo HD : ~0.04-0.07 kg CO₂/h selon pays et fournisseur.",
+      "next_id": "M9"
+    },
+    {
+      "id": "M8C",
+      "type": "consequence",
+      "character": "christophe",
+      "co2_added": 0.05,
+      "co2_direction": 1,
+      "title": "Appel téléphonique",
+      "consequence": "Un appel audio = très faible consommation. Le lien social sans le coût du stream.",
+      "tip": "Un appel téléphonique 1h : ~0.001-0.005 kg CO₂. Bien moins qu'une visio.",
+      "next_id": "M9"
+    },
+    {
+      "id": "M8D",
+      "type": "consequence",
+      "character": "christophe",
+      "co2_added": 0.10,
+      "co2_direction": 1,
+      "title": "Cuisine avec père",
+      "consequence": "Préparer plusieurs repas en une fois est plus efficace énergétiquement. Et plus convivial.",
+      "tip": "Cuisiner en batch (batch cooking) réduit les émissions liées à la cuisson de 20-30%.",
+      "next_id": "M9"
+    },
+    {
+      "id": "M9",
+      "type": "choice",
+      "character": "christophe",
+      "narrative": "Avant de dormir, Christophe pense au chauffage. La nuit va être fraîche.",
+      "question": "Quelle est la température du chauffage la nuit ?",
+      "choices": [
+        { "label": "16°C — fenêtre entrouverte", "sub": "Conseillé pour dormir", "co2_kg": 0.15, "co2_label": "0.15 kg CO₂", "next_id": "M_END" },
+        { "label": "19°C — confort standard", "sub": "Son réglage habituel", "co2_kg": 0.35, "co2_label": "0.35 kg CO₂", "next_id": "M_END2" },
+        { "label": "22°C — il a froid cette nuit", "sub": "Hiver difficile", "co2_kg": 0.60, "co2_label": "0.6 kg CO₂", "next_id": "M_END3" }
+      ]
+    },
+    {
+      "id": "M_END",
+      "type": "end",
+      "character": "christophe",
+      "co2_added": 0.15,
+      "narrative": "Christophe dort bien au frais. Son empreinte nocturne est minimale.",
+      "meeting_occurred": false
+    },
+    {
+      "id": "M_END2",
+      "type": "end",
+      "character": "christophe",
+      "co2_added": 0.35,
+      "narrative": "Nuit confortable. Il faudra cependant penser à baisser entre 15h et 18h pour économiser.",
+      "meeting_occurred": false
+    },
+    {
+      "id": "M_END3",
+      "type": "end",
+      "character": "christophe",
+      "co2_added": 0.60,
+      "narrative": "Nuit bien chauffée. Chaque degré supplémentaire = +7% de consommation de chauffage.",
+      "meeting_occurred": false
+    }
+  ]
+}

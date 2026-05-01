@@ -1,0 +1,243 @@
+{
+  "meta": {
+    "day_id": "mercredi",
+    "label": "Mercredi",
+    "character": "tristan",
+    "title": "Midi en ville & soirée",
+    "subtitle": "Journée charnière",
+    "type": "major",
+    "node_count": 21,
+    "meeting_possible": true,
+    "profile": {
+      "name": "Tristan",
+      "age": 20,
+      "description": "Jeune adulte enjoué, extraverti, habite seul près de son université. Aime manger à l'extérieur, jouer aux jeux vidéos, faire des sorties (soirées, escape game...).",
+      "style": "Arbre externe, événementiel — MAJEUR, journée charnière avec rencontre possible avec Christophe"
+    }
+  },
+  "nodes": [
+    {
+      "id": "ME1",
+      "type": "choice",
+      "character": "tristan",
+      "narrative": "Mercredi. Tristan n'a cours que l'après-midi. Il passe la matinée chez lui.",
+      "question": "Que fait-il pour le petit-déjeuner ?",
+      "choices": [
+        { "label": "Café en capsule + toast grillé", "sub": "Vite fait", "co2_kg": 0.30, "co2_label": "0.3 kg CO₂", "next_id": "ME2A" },
+        { "label": "Café filtre + œufs brouillés", "sub": "Il prend son temps", "co2_kg": 0.25, "co2_label": "0.25 kg CO₂", "next_id": "ME2B" },
+        { "label": "Commande Deliveroo breakfast", "sub": "Bagels + jus d'orange frais", "co2_kg": 1.20, "co2_label": "1.2 kg CO₂", "next_id": "ME2C" }
+      ]
+    },
+    {
+      "id": "ME2A",
+      "type": "consequence",
+      "character": "tristan",
+      "co2_added": 0.30,
+      "co2_direction": 0,
+      "title": "Capsule + toast",
+      "consequence": "Les capsules aluminium génèrent 5× plus de déchets qu'un café filtre. Mais ça reste modéré.",
+      "tip": "Capsule Nespresso : ~0.05 kg CO₂/unité + emballage alu difficile à recycler.",
+      "next_id": "ME3"
+    },
+    {
+      "id": "ME2B",
+      "type": "consequence",
+      "character": "tristan",
+      "co2_added": 0.25,
+      "co2_direction": 1,
+      "title": "Café filtre + œufs",
+      "consequence": "Option équilibrée. Les œufs ajoutent des protéines sans la lourdeur de la viande.",
+      "tip": "Œuf = ~0.24 kg CO₂/unité. Moins que la viande, plus que les légumes.",
+      "next_id": "ME3"
+    },
+    {
+      "id": "ME2C",
+      "type": "consequence",
+      "character": "tristan",
+      "co2_added": 1.20,
+      "co2_direction": -1,
+      "title": "Deliveroo breakfast",
+      "consequence": "Emballage × nombreux contenants, trajet dédié, jus pasteurisé transporté.",
+      "tip": "Chaque livraison = un trajet dédié + emballages multi-couches. Le matin c'est redoutable.",
+      "next_id": "ME3"
+    },
+    {
+      "id": "ME3",
+      "type": "choice",
+      "character": "tristan",
+      "narrative": "10h — Tristan pense aux courses. Il n'a plus rien à manger ce soir.",
+      "question": "Comment fait-il ses courses ?",
+      "choices": [
+        { "label": "Supermarché en bas de chez lui (à pied)", "sub": "Leclerc, 7 min à pied", "co2_kg": 0.20, "co2_label": "~0.2 kg CO₂", "next_id": "ME4A" },
+        { "label": "Commande en ligne (livrée demain)", "sub": "Pratico-pratique", "co2_kg": 0.60, "co2_label": "~0.6 kg CO₂", "next_id": "ME4B" },
+        { "label": "Marché local (15 min à vélo)", "sub": "Produits locaux de saison", "co2_kg": 0.10, "co2_label": "~0.1 kg CO₂", "next_id": "ME4C" }
+      ]
+    },
+    {
+      "id": "ME4A",
+      "type": "consequence",
+      "character": "tristan",
+      "co2_added": 0.20,
+      "co2_direction": 0,
+      "title": "Supermarché à pied",
+      "consequence": "Trajet nul, produits standards, emballages classiques. Option de base correcte.",
+      "tip": "Aller à pied au magasin vs en voiture : économise ~0.3-0.5 kg CO₂ aller-retour.",
+      "next_id": "ME5"
+    },
+    {
+      "id": "ME4B",
+      "type": "consequence",
+      "character": "tristan",
+      "co2_added": 0.60,
+      "co2_direction": -1,
+      "title": "Livraison en ligne",
+      "consequence": "Camionnette de livraison qui dessert toute la rue. Mais si peu de voisins commandent, le ratio est mauvais.",
+      "tip": "Livraison alimentaire mutualisée à haute densité peut valoir un trajet voiture. Sinon non.",
+      "next_id": "ME5"
+    },
+    {
+      "id": "ME4C",
+      "type": "consequence",
+      "character": "tristan",
+      "co2_added": 0.10,
+      "co2_direction": 1,
+      "title": "Marché local à vélo",
+      "consequence": "Le meilleur choix. Zéro emballage superflu, circuit ultra-court, saison.",
+      "tip": "Produit local de saison = jusqu'à 10× moins d'émissions qu'un équivalent importé hors-saison.",
+      "next_id": "ME5"
+    },
+    {
+      "id": "ME5",
+      "type": "choice",
+      "character": "tristan",
+      "narrative": "Midi — Tristan reçoit un message de Christophe : 'Je suis en ville, tu veux qu'on se retrouve pour manger ?'",
+      "question": "Tristan accepte-t-il de retrouver Christophe ?",
+      "choices": [
+        { "label": "Oui, il propose un endroit à pied", "sub": "Resto végétarien en bas de sa rue", "co2_kg": 0.05, "co2_label": "0.05 kg CO₂", "next_id": "ME6_MEETING", "triggers_meeting": true },
+        { "label": "Oui, mais il propose un food truck loin", "sub": "30 min en scooter partagé", "co2_kg": 0.90, "co2_label": "0.9 kg CO₂", "next_id": "ME6_MEETING2", "triggers_meeting": true },
+        { "label": "Non, il mange seul chez lui", "sub": "Sandwich surgelé micro-ondes", "co2_kg": 0.80, "co2_label": "0.8 kg CO₂", "next_id": "ME6_ALONE", "triggers_meeting": false }
+      ]
+    },
+    {
+      "id": "ME6_MEETING",
+      "type": "consequence",
+      "character": "tristan",
+      "co2_added": 0.05,
+      "co2_direction": 1,
+      "meeting": true,
+      "title": "Rencontre ! Resto végétarien",
+      "consequence": "Tristan et Christophe se retrouvent au quartier. C'est leur premier repas ensemble cette semaine.",
+      "tip": "Un repas végétarien = en moyenne 2× moins d'émissions qu'un équivalent avec viande.",
+      "meeting_note": "Tristan et Christophe déjeunent ensemble dans un petit resto végétarien. Christophe, habituellement hésitant pour les sorties, apprécie l'ambiance tranquille proposée par Tristan.",
+      "next_id": "ME7"
+    },
+    {
+      "id": "ME6_MEETING2",
+      "type": "consequence",
+      "character": "tristan",
+      "co2_added": 0.90,
+      "co2_direction": 0,
+      "meeting": true,
+      "title": "Rencontre ! Food truck lointain",
+      "consequence": "Ils se retrouvent quand même, mais le trajet en scooter alourdit le bilan.",
+      "tip": "Scooter électrique partagé : ~30-50g CO₂/km de déplacement.",
+      "meeting_note": "Tristan et Christophe font une aventure pour un food truck réputé. Christophe hésite longtemps avant d'accepter, mais finit par y aller. Le burrito était délicieux.",
+      "next_id": "ME7"
+    },
+    {
+      "id": "ME6_ALONE",
+      "type": "consequence",
+      "character": "tristan",
+      "co2_added": 0.80,
+      "co2_direction": -1,
+      "meeting": false,
+      "title": "Seul, sandwich surgelé",
+      "consequence": "Il rate une opportunité de voir Christophe. Le sandwich surgelé + micro-ondes n'est pas une bonne option.",
+      "tip": "Plat surgelé micro-ondé : emballages plastique, transformation industrielle, transport réfrigéré.",
+      "next_id": "ME7"
+    },
+    {
+      "id": "ME7",
+      "type": "choice",
+      "character": "tristan",
+      "narrative": "Après-midi — Tristan a ses cours. Il a son PC portable et doit le recharger. Il prend un café entre deux cours.",
+      "question": "Quel café ?",
+      "choices": [
+        { "label": "Café de la machine (gobelet jetable)", "sub": "Le plus facile", "co2_kg": 0.08, "co2_label": "0.08 kg CO₂", "next_id": "ME8A" },
+        { "label": "Café dans son mug réutilisable (filtre)", "sub": "Il a un mug dans son sac", "co2_kg": 0.02, "co2_label": "0.02 kg CO₂", "next_id": "ME8B" },
+        { "label": "Boisson énergisante en canette", "sub": "Il est fatigué", "co2_kg": 0.25, "co2_label": "0.25 kg CO₂", "next_id": "ME8C" }
+      ]
+    },
+    {
+      "id": "ME8A",
+      "type": "consequence",
+      "character": "tristan",
+      "co2_added": 0.08,
+      "co2_direction": 0,
+      "title": "Machine + gobelet jetable",
+      "consequence": "Le gobelet papier + plastique finit à la poubelle. La machine conso aussi plus qu'un filtre.",
+      "tip": "1 milliard de gobelets jetables/an en France. Le mug réutilisable s'amortit dès le 2e café.",
+      "next_id": "ME9"
+    },
+    {
+      "id": "ME8B",
+      "type": "consequence",
+      "character": "tristan",
+      "co2_added": 0.02,
+      "co2_direction": 1,
+      "title": "Mug réutilisable",
+      "consequence": "Tristan avait glissé son mug dans le sac. Minuscule empreinte.",
+      "tip": "Mug réutilisable × 250 utilisations = empreinte amorti très vite vs gobelet jetable.",
+      "next_id": "ME9"
+    },
+    {
+      "id": "ME8C",
+      "type": "consequence",
+      "character": "tristan",
+      "co2_added": 0.25,
+      "co2_direction": -1,
+      "title": "Canette énergisante",
+      "consequence": "Eau gazéifiée + conservateurs + boîte alu + sucres. Overkill pour rester éveillé.",
+      "tip": "Production d'une canette alu = ~0.17 kg CO₂ rien que pour l'emballage.",
+      "next_id": "ME9"
+    },
+    {
+      "id": "ME9",
+      "type": "choice",
+      "character": "tristan",
+      "narrative": "Soir — Tristan peut faire quelque chose. Il hésite.",
+      "question": "La soirée du mercredi ?",
+      "choices": [
+        { "label": "Cinéma en ville avec des amis (métro)", "sub": "Film en salle, 20 min trajet", "co2_kg": 0.30, "co2_label": "0.3 kg CO₂", "next_id": "ME_END" },
+        { "label": "Gaming en ligne avec Christophe (Discord)", "sub": "Depuis chez lui", "co2_kg": 0.35, "co2_label": "0.35 kg CO₂", "next_id": "ME_END2", "triggers_meeting": true },
+        { "label": "Sortie running dans le parc", "sub": "45 min, de nuit", "co2_kg": 0.00, "co2_label": "0 kg CO₂", "next_id": "ME_END3" }
+      ]
+    },
+    {
+      "id": "ME_END",
+      "type": "end",
+      "character": "tristan",
+      "co2_added": 0.30,
+      "narrative": "Bonne soirée. Le cinéma en salle est une des activités culturelles les plus efficientes en CO₂/personne.",
+      "meeting_occurred": false
+    },
+    {
+      "id": "ME_END2",
+      "type": "end",
+      "character": "tristan",
+      "co2_added": 0.35,
+      "meeting": true,
+      "narrative": "Tristan et Christophe jouent ensemble en ligne. Une soirée tranquille mais connectée.",
+      "meeting_note": "Tristan initie une session de jeu multijoueur. Christophe accepte, un peu hésitant au départ. Ils passent deux heures ensemble depuis chez eux.",
+      "meeting_occurred": true
+    },
+    {
+      "id": "ME_END3",
+      "type": "end",
+      "character": "tristan",
+      "co2_added": 0.00,
+      "narrative": "Running dans le parc. Zéro émission. Tristan rentre fatigué et de bonne humeur.",
+      "meeting_occurred": false
+    }
+  ]
+}

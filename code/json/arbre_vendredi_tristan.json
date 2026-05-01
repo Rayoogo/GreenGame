@@ -1,0 +1,189 @@
+{
+  "meta": {
+    "day_id": "vendredi",
+    "label": "Vendredi",
+    "character": "tristan",
+    "title": "Week-end qui approche",
+    "subtitle": "Décisions sociales",
+    "type": "major",
+    "node_count": 18,
+    "meeting_possible": true,
+    "profile": {
+      "name": "Tristan",
+      "age": 20,
+      "description": "Jeune adulte enjoué, extraverti, habite seul près de son université. Aime manger à l'extérieur, jouer aux jeux vidéos, faire des sorties (soirées, escape game...).",
+      "style": "Arbre externe, événementiel — MAJEUR, journée sociale avec grande rencontre possible avec Christophe (escape game)"
+    }
+  },
+  "nodes": [
+    {
+      "id": "V1",
+      "type": "choice",
+      "character": "tristan",
+      "narrative": "Vendredi ! Fin de semaine. Tristan n'a pas cours le matin.",
+      "question": "Il se réveille à 10h. Quelle est sa première action ?",
+      "choices": [
+        { "label": "Scroll réseaux sociaux 1h puis café", "sub": "Habitude matinale", "co2_kg": 0.05, "co2_label": "0.05 kg CO₂", "next_id": "V2A" },
+        { "label": "Jogging matinal 30 min puis douche", "sub": "Il s'y force le vendredi", "co2_kg": 0.02, "co2_label": "0.02 kg CO₂", "next_id": "V2B" },
+        { "label": "Commande directe d'un brunch", "sub": "Se faire plaisir", "co2_kg": 1.50, "co2_label": "1.5 kg CO₂", "next_id": "V2C" }
+      ]
+    },
+    {
+      "id": "V2A",
+      "type": "consequence",
+      "character": "tristan",
+      "co2_added": 0.05,
+      "co2_direction": 0,
+      "title": "Réseaux + café",
+      "consequence": "Smartphone 1h + cafetière. Faible impact direct mais l'habitude du scroll ralentit la journée.",
+      "tip": "Smartphone 1h : ~0.003 kg CO₂. Le vrai impact est la fabrication (70-80% de l'empreinte totale).",
+      "next_id": "V3"
+    },
+    {
+      "id": "V2B",
+      "type": "consequence",
+      "character": "tristan",
+      "co2_added": 0.02,
+      "co2_direction": 1,
+      "title": "Jogging matinal",
+      "consequence": "Zéro émission de déplacement, douche courte après. Excellent début.",
+      "tip": "30 min de running : 0 émission directe + bénéfice santé. Le sport outdoor bat tout.",
+      "next_id": "V3"
+    },
+    {
+      "id": "V2C",
+      "type": "consequence",
+      "character": "tristan",
+      "co2_added": 1.50,
+      "co2_direction": -1,
+      "title": "Brunch commandé",
+      "consequence": "Livraison matin = trajet dédié + emballages chauds + portions souvent suremballées.",
+      "tip": "Brunch livré : emballages ×5 contenants minimum. Cuisiner chez soi reste bien plus sobre.",
+      "next_id": "V3"
+    },
+    {
+      "id": "V3",
+      "type": "choice",
+      "character": "tristan",
+      "narrative": "L'après-midi, Tristan veut faire quelque chose de sympa. Il contacte plusieurs amis.",
+      "question": "Quelle activité prévoit-il ?",
+      "choices": [
+        { "label": "Escape game en ville (métro + marche)", "sub": "Avec 3 amis dont Christophe ?", "co2_kg": 0.30, "co2_label": "0.3 kg CO₂", "next_id": "V4_MEETING", "triggers_meeting": true },
+        { "label": "Karting électrique (transport collectif)", "sub": "Activité groupe", "co2_kg": 0.50, "co2_label": "0.5 kg CO₂", "next_id": "V4B" },
+        { "label": "Pique-nique au parc (vélo)", "sub": "Si beau temps", "co2_kg": 0.05, "co2_label": "0.05 kg CO₂", "next_id": "V4C" },
+        { "label": "Soirée house party chez lui", "sub": "Il invite des gens", "co2_kg": 0.70, "co2_label": "0.7 kg CO₂", "next_id": "V4D" }
+      ]
+    },
+    {
+      "id": "V4_MEETING",
+      "type": "consequence",
+      "character": "tristan",
+      "co2_added": 0.30,
+      "co2_direction": 1,
+      "meeting": true,
+      "title": "Escape game + Christophe",
+      "consequence": "Tristan invite Christophe. Christophe hésite (comme toujours) mais finit par accepter.",
+      "tip": "Escape game : activité en local, peu d'énergie directe. Le transport est le principal poste.",
+      "meeting_note": "Grande rencontre ! Tristan, Christophe et deux autres amis font l'escape game ensemble. C'est la première vraie sortie partagée de la semaine. Christophe sort de sa zone de confort et l'apprécie.",
+      "next_id": "V5"
+    },
+    {
+      "id": "V4B",
+      "type": "consequence",
+      "character": "tristan",
+      "co2_added": 0.50,
+      "co2_direction": 0,
+      "title": "Karting électrique",
+      "consequence": "L'électrique atténue l'impact direct mais la salle, la fabrication des karts, les déplacements s'accumulent.",
+      "tip": "Karting électrique : ~0.1 kg CO₂/session directement. Indirect (bâtiment, équipement) multiplie.",
+      "next_id": "V5"
+    },
+    {
+      "id": "V4C",
+      "type": "consequence",
+      "character": "tristan",
+      "co2_added": 0.05,
+      "co2_direction": 1,
+      "title": "Pique-nique au parc",
+      "consequence": "Tristan prépare des sandwichs, ils pédalent jusqu'au parc. Une super après-midi sans voiture.",
+      "tip": "Pique-nique maison au parc = quasi zéro émission de loisir. L'activité outdoor par excellence.",
+      "next_id": "V5"
+    },
+    {
+      "id": "V4D",
+      "type": "consequence",
+      "character": "tristan",
+      "co2_added": 0.70,
+      "co2_direction": -1,
+      "title": "House party chez lui",
+      "consequence": "Musique (sono), lumières, consommations, déchets, allers-retours des invités.",
+      "tip": "Une fête à 15 personnes avec sono et éclairage = ~10 kWh électricité soit ~0.5 kg CO₂.",
+      "next_id": "V5"
+    },
+    {
+      "id": "V5",
+      "type": "choice",
+      "character": "tristan",
+      "narrative": "Pour le dîner du vendredi soir, Tristan réfléchit.",
+      "question": "Que mange-t-il ce soir ?",
+      "choices": [
+        { "label": "Pizza maison avec les ingrédients achetés", "sub": "Farine, tomates, fromage", "co2_kg": 0.80, "co2_label": "0.8 kg CO₂", "next_id": "V6A" },
+        { "label": "Sushi en livraison", "sub": "Plaisir du vendredi", "co2_kg": 2.10, "co2_label": "2.1 kg CO₂", "next_id": "V6B" },
+        { "label": "Restes du frigo + tartines", "sub": "Bof mais économique", "co2_kg": 0.20, "co2_label": "0.2 kg CO₂", "next_id": "V6C" },
+        { "label": "Burger dans un fast food", "sub": "Avec des amis après la sortie", "co2_kg": 2.40, "co2_label": "2.4 kg CO₂", "next_id": "V6D" }
+      ]
+    },
+    {
+      "id": "V6A",
+      "type": "consequence",
+      "character": "tristan",
+      "co2_added": 0.80,
+      "co2_direction": 0,
+      "title": "Pizza maison",
+      "consequence": "Le fromage représente 70% de l'impact. Mais cuisiner soi-même = zéro emballage inutile, zéro livraison.",
+      "tip": "100g de fromage = ~1.2 kg CO₂. La pizza faite maison reste 2-3× mieux qu'une livrée.",
+      "next_id": "V_END"
+    },
+    {
+      "id": "V6B",
+      "type": "consequence",
+      "character": "tristan",
+      "co2_added": 2.10,
+      "co2_direction": -1,
+      "title": "Sushi livraison",
+      "consequence": "Poisson + riz + multiplicité d'emballages individuels + trajet froid = impact élevé.",
+      "tip": "La réfrigération pendant la livraison augmente l'empreinte. Le sushi emballé reste onéreux en CO₂.",
+      "next_id": "V_END"
+    },
+    {
+      "id": "V6C",
+      "type": "consequence",
+      "character": "tristan",
+      "co2_added": 0.20,
+      "co2_direction": 1,
+      "title": "Restes du frigo",
+      "consequence": "Manger ses restes = anti-gaspillage direct. C'est parfois la meilleure décision.",
+      "tip": "Le gaspillage alimentaire à domicile représente 30% du total. Manger les restes compte vraiment.",
+      "next_id": "V_END"
+    },
+    {
+      "id": "V6D",
+      "type": "consequence",
+      "character": "tristan",
+      "co2_added": 2.40,
+      "co2_direction": -1,
+      "title": "Fast food burger",
+      "consequence": "Bœuf haché + emballage individuel + friteuse industrielle. L'option la plus émettrice.",
+      "tip": "Un burger bœuf standard = ~2.5 kg CO₂. C'est plus qu'un trajet Paris-Lyon en train.",
+      "next_id": "V_END"
+    },
+    {
+      "id": "V_END",
+      "type": "end",
+      "character": "tristan",
+      "narrative": "Tristan finit son vendredi. Demain : Christophe prend le relai pour le bilan de sa semaine.",
+      "meeting_occurred": null,
+      "comment": "La valeur meeting_occurred dépend du chemin emprunté (V4_MEETING = true, sinon false)."
+    }
+  ]
+}
