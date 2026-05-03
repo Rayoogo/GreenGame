@@ -6,10 +6,10 @@ html, body {
 
 body {
     background-image: url(../img/menu/menu_background.webp);
+     /* backdrop-filter: blur(02px); */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: auto;
-    filter: opacity(100%);
     font-family: arial;
     display: flex;
     flex-direction: column;
@@ -37,7 +37,7 @@ a {
     color: rgb(44, 100, 44);
     margin-bottom: 0%;
     text-align: center;
-    text-shadow: 3px 3px 10px rgba(0,0,0,0.4);
+    text-shadow: 3px 3px 10px rgba(0,0,0,1);
 }
 
 .play_continue {
@@ -47,7 +47,7 @@ a {
     margin-top: 0%;
     margin-bottom: 0%;
     text-align: center;
-    text-shadow: 3px 3px 10px rgba(0,0,0,0.4);
+    text-shadow: 3px 3px 10px rgba(0,0,0,0.8);
 }
 
 .restart {
