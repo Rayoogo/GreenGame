@@ -338,7 +338,7 @@ function showEndScreen() {
 
 function goToNextDay(event) {
     if (event) event.stopPropagation();
-    window.location.href = 'mardi_christophe.html';
+    window.location.href = 'tuesday_game.html';
 }
 
 window.onload = () => {
