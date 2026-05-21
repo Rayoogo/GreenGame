@@ -4,7 +4,7 @@ html, body {
     padding: 0;
 }
 
-body {
+.menu {
     background-image: url(../img/menu/menu_background.webp);
      /* backdrop-filter: blur(02px); */
     background-size: cover;
@@ -77,3 +77,6 @@ footer {
     font-size: clamp(10px, 2vw, 20px);
     color: white;
 }
+
+/* Objectifs */
+button {display: contents;}

@@ -1,0 +1,1 @@
+function retour() {document.location.replace("\start_menu.html")}
