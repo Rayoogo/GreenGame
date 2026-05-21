@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Game - Mercredi (Tristan)</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div id="game-container" onclick="handleClick(event)">
+        <div id="bg-image"></div>
+        <div id="bg-overlay"></div>
+
+        <a href="pause_menu.html" id="pause-btn" title="Menu Pause" onclick="event.stopPropagation()">⏸</a>
+
+        <div id="hud">
+            <div class="hud-panel" style="font-size:0.8rem; color:#fff; background:transparent; box-shadow:none; margin-left: 60px;">Chapitre 3</div>
+            <div id="progress-container"><div id="progress-bar"></div></div>
+            <div id="co2-display" class="hud-panel">
+                <div class="label">Compteur CO₂</div>
+                <div class="value" id="co2-value">0.00 kg</div>
+            </div>
+        </div>
+
+        <div id="choices-container"></div>
+
+        <div id="dialogue-area">
+            <div id="dialogue-text"></div>
+            <div id="consequence-box">
+                <div id="cons-text"></div>
+                <div id="co2-impact-display"></div>
+                <div class="tip" id="cons-tip"></div>
+            </div>
+            <button id="continue-btn" onclick="event.stopPropagation(); nextNode();">Continuer →</button>
+            <div id="click-indicator" class="blink">▼ Cliquez pour continuer</div>
+        </div>
+
+        <div id="end-screen" onclick="goToNextDay(event)">
+            <div class="end-content">
+                <div class="end-left">
+                    <h1>Vous avez fini la journée.</h1>
+                    <h2>Voici votre bilan :</h2>
+                    <ul class="end-list" id="end-actions-list"></ul>
+                    <div class="end-total">
+                        Aujourd'hui vous avez émis un total de : <strong id="end-total-co2">???kg de CO2</strong>
+                    </div>
+                    <p style="margin-top: 20px; font-size: 1rem; color: #888;">Pour finir par vous coucher.</p>
+                </div>
+            </div>
+            <div class="continue-hint">Appuyez sur espace pour continuer</div>
+        </div>
+    </div>
+    <script src="../js/wednesday_script.js"></script>
+</body>
+</html>

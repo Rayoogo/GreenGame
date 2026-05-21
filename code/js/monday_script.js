@@ -73,7 +73,7 @@ const state = {
     isDialogueMode: true,
     showEndOnNextClick: false,
     showingConsequence: false,
-    co2Added: false, // Flag pour éviter de compter le CO2 deux fois
+    co2Added: false,
     maxCO2: 5.55,
     choices: {
         transport: { label: "", co2: 0 },
